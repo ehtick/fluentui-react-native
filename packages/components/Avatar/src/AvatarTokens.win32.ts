@@ -16,7 +16,7 @@ export const defaultAvatarTokens: TokenSettings<AvatarTokens, Theme> = (t: Theme
     iconSize: 16,
     iconColor: t.colors.neutralForeground3,
     ringColor: t.colors.transparentStroke,
-    borderColor: globalTokens.color.white,
+    borderColor: t.colors.neutralStroke1,
     borderWidth: t.name === 'HighContrast' ? 1 : 0,
     circular: {
       borderRadius: globalTokens.corner.radius.circle,
@@ -75,7 +75,7 @@ export const defaultAvatarTokens: TokenSettings<AvatarTokens, Theme> = (t: Theme
     },
     size56: {
       size: 56,
-      badgeSize: 'small',
+      badgeSize: 'medium',
       iconSize: 28,
       fontSize: globalTokens.font.size[400],
       square: {
@@ -84,7 +84,7 @@ export const defaultAvatarTokens: TokenSettings<AvatarTokens, Theme> = (t: Theme
     },
     size64: {
       size: 64,
-      badgeSize: 'medium',
+      badgeSize: 'large',
       iconSize: 32,
       fontSize: globalTokens.font.size[500],
       square: {
@@ -93,7 +93,7 @@ export const defaultAvatarTokens: TokenSettings<AvatarTokens, Theme> = (t: Theme
     },
     size72: {
       size: 72,
-      badgeSize: 'medium',
+      badgeSize: 'large',
       iconSize: 32,
       fontSize: globalTokens.font.size[500],
       square: {

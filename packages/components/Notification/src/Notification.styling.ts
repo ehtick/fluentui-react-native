@@ -12,6 +12,7 @@ export const notificationStates: (keyof NotificationTokens)[] = [
   'danger',
   'warning',
   'hasTitle',
+  'isBar',
 ];
 
 export const stylingSettings: UseStylingOptions<NotificationProps, NotificationSlotProps, NotificationTokens> = {
@@ -23,7 +24,6 @@ export const stylingSettings: UseStylingOptions<NotificationProps, NotificationS
         style: {
           backgroundColor: tokens.backgroundColor,
           borderColor: tokens.borderColor,
-          marginHorizontal: 16,
           flex: 1,
           flexDirection: 'row',
           justifyContent: 'space-between',
@@ -32,6 +32,18 @@ export const stylingSettings: UseStylingOptions<NotificationProps, NotificationS
         },
       }),
       ['backgroundColor', ...borderStyles.keys, ...layoutStyles.keys],
+    ),
+    icon: buildProps(
+      (tokens: NotificationTokens) => ({
+        style: {
+          alignSelf: 'center',
+          marginEnd: 16,
+        },
+        color: tokens.color,
+        height: 24,
+        width: 24,
+      }),
+      ['color'],
     ),
     contentContainer: buildProps(() => {
       return {
@@ -46,12 +58,12 @@ export const stylingSettings: UseStylingOptions<NotificationProps, NotificationS
         return {
           style: {
             color: tokens.color,
-            fontSize: 15,
-            fontWeight: '600',
-            lineHeight: 20,
-            letterSpacing: -0.24,
             flex: 1,
             flexGrow: 1,
+            fontSize: 15,
+            fontWeight: '600',
+            letterSpacing: -0.24, // iOS only prop
+            lineHeight: 20,
           },
         };
       },
@@ -74,17 +86,19 @@ export const stylingSettings: UseStylingOptions<NotificationProps, NotificationS
       (tokens: NotificationTokens) => {
         return {
           style: {
-            color: tokens.color,
-            marginLeft: 16,
             alignSelf: 'center',
+            marginStart: 16,
           },
           appearance: 'subtle',
+          color: tokens.color,
+          disabledColor: tokens.disabledColor,
+          pressedColor: tokens.pressedColor,
+          minWidth: 0,
           padding: 0,
           paddingHorizontal: 0,
-          minWidth: 0,
         };
       },
-      ['color'],
+      ['color', ...fontStyles.keys],
     ),
   },
 };

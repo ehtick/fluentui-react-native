@@ -1,6 +1,13 @@
 import * as React from 'react';
 import { Notification } from '@fluentui-react-native/notification';
 import { Test, TestSection, PlatformStatus } from '../Test';
+import { SvgIconProps } from '@fluentui-react-native/icon';
+import PlayButton from './assets/play_button.svg';
+
+const svgProps: SvgIconProps = {
+  src: PlayButton,
+};
+const iconProps = { svgSource: svgProps };
 
 const PrimaryTest: React.FunctionComponent = () => {
   return (
@@ -10,18 +17,21 @@ const PrimaryTest: React.FunctionComponent = () => {
       onPress={() => {
         console.log('Notification tapped');
       }}
+      onActionPress={() => {
+        console.log('Undo tapped');
+      }}
     >
       Mail Archived
     </Notification>
   );
 };
 
-const PrimaryTestWithTitle: React.FunctionComponent = () => {
+const PrimaryTestWithTitleAndIcon: React.FunctionComponent = () => {
   return (
     <Notification
       variant={'primary'}
-      title="Kat's iPhone X"
-      action="X"
+      icon={iconProps}
+      title="Kat's iPhoneX"
       onPress={() => {
         console.log('Notification tapped');
       }}
@@ -39,6 +49,9 @@ const NeutralTest: React.FunctionComponent = () => {
       onPress={() => {
         console.log('Notification tapped');
       }}
+      onActionPress={() => {
+        console.log('Sign in tapped');
+      }}
     >
       Some items require you to sign in to view them
     </Notification>
@@ -53,6 +66,9 @@ const DangerTest: React.FunctionComponent = () => {
       onPress={() => {
         console.log('Notification tapped');
       }}
+      onActionPress={() => {
+        console.log('Retry tapped');
+      }}
     >
       There was a problem, and your recent changes may not have saved
     </Notification>
@@ -63,12 +79,50 @@ const WarningTest: React.FunctionComponent = () => {
   return (
     <Notification
       variant={'warning'}
-      action="X"
       onPress={() => {
         console.log('Notification tapped');
       }}
     >
       Read Only
+    </Notification>
+  );
+};
+
+const PrimaryBarTest: React.FunctionComponent = () => {
+  return (
+    <Notification
+      variant={'primaryBar'}
+      onPress={() => {
+        console.log('Notification tapped');
+      }}
+    >
+      Updating...
+    </Notification>
+  );
+};
+
+const PrimaryOutlineBarTest: React.FunctionComponent = () => {
+  return (
+    <Notification
+      variant={'primaryOutlineBar'}
+      onPress={() => {
+        console.log('Notification tapped');
+      }}
+    >
+      Mail Sent
+    </Notification>
+  );
+};
+
+const NeutralBarTest: React.FunctionComponent = () => {
+  return (
+    <Notification
+      variant={'neutralBar'}
+      onPress={() => {
+        console.log('Notification tapped');
+      }}
+    >
+      No internet connection
     </Notification>
   );
 };
@@ -79,8 +133,8 @@ const notificationSections: TestSection[] = [
     component: PrimaryTest,
   },
   {
-    name: 'Primary With Title',
-    component: PrimaryTestWithTitle,
+    name: 'Primary with Title and Icon',
+    component: PrimaryTestWithTitleAndIcon,
   },
   {
     name: 'Neutral',
@@ -93,6 +147,18 @@ const notificationSections: TestSection[] = [
   {
     name: 'Warning',
     component: WarningTest,
+  },
+  {
+    name: 'Primary Bar',
+    component: PrimaryBarTest,
+  },
+  {
+    name: 'Primary Outline Bar',
+    component: PrimaryOutlineBarTest,
+  },
+  {
+    name: 'Neutral Bar',
+    component: NeutralBarTest,
   },
 ];
 
